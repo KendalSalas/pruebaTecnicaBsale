@@ -4,7 +4,7 @@ include_once 'db.php';
 //Clase para hacer una query a la tabla 'category'
 class Categorias extends DB
 {
-    public function obtenerCategorias()
+    public function queryCategorias()
     {
         $queryCategorias = "SELECT * FROM category";
         $execCategorias  = $this->connect()->query($queryCategorias);
