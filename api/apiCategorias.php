@@ -34,7 +34,7 @@ class ApiCategorias
             echo json_encode($categorias);
         } else {
             //Caso contrario, regreso el arreglo con un mensaje de error como JSON
-            echo json_encode(array("mensaje" => "No hay productos en esa categoria"));
+            echo json_encode(array("mensaje" => "NO HAY DATOS"));
         }
     }
 }
