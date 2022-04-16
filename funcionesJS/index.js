@@ -1,4 +1,4 @@
-import { listadoCategorias } from "./listadoCategorias";
+import { listadoCategorias } from "./listadoCategorias.js";
 
 export{
     listadoCategorias,
