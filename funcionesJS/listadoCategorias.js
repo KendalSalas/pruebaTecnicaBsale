@@ -1,6 +1,6 @@
 //Archivo JS donde almacenare la funcion para hacer fetch a j-listado-categorias
 //Y poder listar las categorias de forma asincrona y dinamica desde la BBDD
-const urlCategorias = 'http://localhost/pruebaTecnicaBsale/ajax/j-listado-categorias.php'; //URL a la cual haré fetch
+const urlCategorias = 'https://prueba-tecnica-bsale.herokuapp.com/ajax/j-listado-categorias.php'; //URL a la cual haré fetch
 const $menuCategorias = document.getElementById('menu-categorias'); //Referencia al menu-categorias de HTML
 
 //Funcion asincrona para obtener el JSON de j-listado-categorias.php
