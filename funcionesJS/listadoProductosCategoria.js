@@ -73,7 +73,12 @@ export const listadoProductosCategoria = async (idCategoria, nombreCategoria) =>
 
         const titulo = `Productos ${nombreCategoria}`; //variable que almacenara el titulo a inyectar en conjunto a los productos
         insertarContenido(titulo, $template);
-        document.getElementById('filtro-orden').value = idCategoria; //Seteo el valor de filtro-orden al id de la categoria actual para poder ordenar en base a ella
+
+        //Actualizo datos de los botones para ordenar por precio/nombre
+        document.getElementById('filtro-orden').value = idCategoria;//Seteo el valor de filtro-orden al id de la categoria actual para poder ordenar en base a ella
+
+        document.getElementById('tipo-orden-precio').setAttribute('listado-productos', 'categoria');
+        document.getElementById('tipo-orden-nombre').setAttribute('listado-productos', 'categoria');
 
     } catch (error) {
         console.error(`Error ${error}`);
