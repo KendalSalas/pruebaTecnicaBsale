@@ -56,7 +56,7 @@ export const listadoProductos = async () => {
         console.log(json);
 
         //La llamada me devuelve un undefined en el primer row, por lo cual lo elimino
-        // $template = $template.replaceAll('undefined', '');
+        $template = $template.replaceAll('undefined', '');
 
         // $h4.innerHTML = 'Productos Destacados'; //Inyecto el titulo en el h4
         // $section.innerHTML = $template; //Guardo todos los productos en el section
