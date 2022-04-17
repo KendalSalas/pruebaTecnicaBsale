@@ -33,7 +33,7 @@ class ApiProductos
             echo json_encode($productos);
         } else {
             //En caso contrario, hago un echo con un arreglo que contiene el mensaje de error como JSON
-            echo json_encode(array("mensaje" => "No hay productos en esa categoria"));
+            echo json_encode(array("mensaje" => "No hay datos"));
         }
     }
 }
