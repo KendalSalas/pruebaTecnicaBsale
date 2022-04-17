@@ -23,7 +23,7 @@ export const listadoProductosOrden = async (listadoProductos, tipoOrden, filtroO
         data.append('listadoProductos', listadoProductos); //Le paso el tipo de listado de productos a buscar (destacados / categoria / resultado busqueda)
         data.append('tipoOrden', tipoOrden) //Tipo de orden para la query, puede ser por nombre o por precio actualmente
 
-        if(filtroOrden != '' || filtroOrden != null){
+        if (filtroOrden != '' || filtroOrden != null) {
             data.append('filtroOrden', filtroOrden);
         }
 
@@ -39,9 +39,9 @@ export const listadoProductosOrden = async (listadoProductos, tipoOrden, filtroO
         // console.log(json);
 
         //En caso de que me devuelva un mensaje de error, lo lanzo al catch con un Error
-        if (json.mensaje == 'Debe ingresar un valor para buscar') {
-            throw new Error('Ingrese un parametro a buscar');
-        } else if(json.error){
+        if (json.mensaje == 'No hay datos') {
+            throw new Error('La consulta no trajo resultados');
+        } else if (json.error) {
             throw new Error('Error al intentar ordenar productos');
         }
 
@@ -79,8 +79,11 @@ export const listadoProductosOrden = async (listadoProductos, tipoOrden, filtroO
 
         let titulo;
 
-        if(listadoProductos == 'todos'){
+        if (listadoProductos == 'todos') {
             titulo = 'Productos';
+        } else if(listadoProductos == 'categoria'){
+            const $nombreLi = document.querySelector(`[id-categoria="${filtroOrden}"]`).getAttribute('nombre-categoria')
+            titulo = `Productos ${$nombreLi}`;
         }
         insertarContenido(titulo, $template);
 
@@ -90,11 +93,7 @@ export const listadoProductosOrden = async (listadoProductos, tipoOrden, filtroO
         //Limpio el main destacados
         document.getElementById('destacados').innerHTML = '';
 
-        //En caso de existir un error, valido cual es, para mostrar un mensaje u otro y luego inyectarlo en el main destacados
-        if (error.message == 'Ingrese un parametro a buscar') {
-            mensajeError('Debe ingresar un nombre para poder buscar.');
-        } else {
-            mensajeError('No hay resultados para mostrar.')
-        }
+        mensajeError('No hay resultados para mostrar.')
+
     }
 }
