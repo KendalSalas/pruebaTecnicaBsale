@@ -17,6 +17,7 @@ d.addEventListener('click', e => {
         const idCategoria = e.target.getAttribute('id-categoria');
         const nombreCategoria = e.target.getAttribute('nombre-categoria');
 
-        console.log(`Id Categoria: ${idCategoria} / Nombre Categoria: ${nombreCategoria}`);
+        // console.log(`Id Categoria: ${idCategoria} / Nombre Categoria: ${nombreCategoria}`);
+        listadoProductosCategoria(idCategoria, nombreCategoria);
     }
 })
