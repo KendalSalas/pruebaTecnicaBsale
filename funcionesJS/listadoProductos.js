@@ -1,5 +1,6 @@
 import { insertarContenido } from "./insertarContenido.js";
 import { insertarSpinner } from "./spinner.js";
+import { mensajeError } from "./mensajeError.js";
 
 //Archivo JS en el cual guardaré la función encargada de hacer fetch a listado-productos y listar los resultados en la página
 const urlProductos = 'https://prueba-tecnica-bsale.herokuapp.com/ajax/j-listado-productos.php'; //URL a la cual haré fetch
@@ -191,20 +192,25 @@ export const listadoProductosNombre = async (nombre) => {
     } catch (error) {
         console.error(`Error ${error}`);
 
-        //En caso de existir un error, creo un H5 con un id error-msj
-        const $errMsj = document.createElement('h5');
-        $errMsj.setAttribute('id', 'error-msj');
+        // //En caso de existir un error, creo un H5 con un id error-msj
+        // const $errMsj = document.createElement('h5');
+        // $errMsj.setAttribute('id', 'error-msj');
 
-        //Limpio el main destacados
-        document.getElementById('destacados').innerHTML = '';
+        // //Limpio el main destacados
+        // document.getElementById('destacados').innerHTML = '';
 
         //En caso de existir un error, valido cual es, para mostrar un mensaje u otro y luego inyectarlo en el main destacados
         if (error.message == 'Ingrese un parametro a buscar') {
-            $errMsj.innerHTML = 'Debe ingresar un nombre para poder buscar';
-            document.getElementById('destacados').appendChild($errMsj);
+            // $errMsj.innerHTML = 'Debe ingresar un nombre para poder buscar';
+            // document.getElementById('destacados').appendChild($errMsj);
+
+            mensajeError('Debe ingresar un nombre para poder buscar.');
+
         } else {
-            $errMsj.innerHTML = 'No hay productos para mostrar';
-            document.getElementById('destacados').appendChild($errMsj);
+            // $errMsj.innerHTML = 'No hay productos para mostrar';
+            // document.getElementById('destacados').appendChild($errMsj);
+
+            mensajeError('No hay resultados para mostrar.')
         }
     }
 }
