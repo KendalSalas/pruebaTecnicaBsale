@@ -48,6 +48,8 @@ export const listadoProductos = async () => {
                         </div>`;
         })
 
+        console.log(json);
+
         //La llamada me devuelve un undefined en el primer row, por lo cual lo elimino
         $template = $template.replaceAll('undefined', '');
 
