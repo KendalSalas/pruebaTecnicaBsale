@@ -170,11 +170,16 @@ export const listadoProductosNombre = async (nombre) => {
     } catch (error) {
         console.error(`Error ${error}`);
 
+        const $errMsj = document.createElement('h5');
+        $errMsj.setAttribute('id', 'error-msj');
+
         //En caso de existir un error, valido cual es, para mostrar un mensaje u otro
         if (error.message == 'Ingrese un parametro a buscar') {
-            document.getElementById('destacados').innerHTML = 'Debe ingresar un nombre para poder buscar';
+            $errMsj.innerHTML = 'Debe ingresar un nombre para poder buscar';
+            document.getElementById('destacados').innerHTML = $errMsj;
         } else {
-            document.getElementById('destacados').innerHTML = 'No hay productos para mostrar';
+            $errMsj.innerHTML = 'No hay productos para mostrar';
+            document.getElementById('destacados').innerHTML = $errMsj;
         }
     }
 }
