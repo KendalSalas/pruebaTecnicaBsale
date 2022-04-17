@@ -12,7 +12,7 @@ const formatter = new Intl.NumberFormat('es-CL', {
 });
 
 //Función asincrona para realizar el fetch a j-listado-productos, enviando como tipo = nombre y el nombre a buscar por POST
-export const listadoProductosOrden = async (listadoProductos, tipoOrden, filtroOrden = '') => {
+export const listadoProductosOrden = async (listadoProductos, tipoOrden, filtroOrden) => {
     let $template; //Variable que almacenará los resultados del fetch
 
     try {
@@ -23,7 +23,7 @@ export const listadoProductosOrden = async (listadoProductos, tipoOrden, filtroO
         data.append('listadoProductos', listadoProductos); //Le paso el tipo de listado de productos a buscar (destacados / categoria / resultado busqueda)
         data.append('tipoOrden', tipoOrden) //Tipo de orden para la query, puede ser por nombre o por precio actualmente
 
-        if (filtroOrden != '' || filtroOrden != null) {
+        if (filtroOrden != '') {
             data.append('filtroOrden', filtroOrden);
         }
 
