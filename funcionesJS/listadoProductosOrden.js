@@ -12,7 +12,7 @@ const formatter = new Intl.NumberFormat('es-CL', {
 });
 
 //Función asincrona para realizar el fetch a j-listado-productos, enviando como tipo = nombre y el nombre a buscar por POST
-export const listadoProductosOrden = async (listadoProductos, tipoOrden, filtroOrden) => {
+export const listadoProductosOrden = async (listadoProductos, tipoOrden, filtroOrden = '') => {
     let $template; //Variable que almacenará los resultados del fetch
 
     try {
