@@ -4,4 +4,8 @@
 include_once '../api/apiProductos.php';
 
 $api = new ApiProductos();
-$api->getProductosDestacados();
+
+//Hago un filtro por el tipo de carga que necesito, para mostrar los destacados, los productos por categoria o los resultados de busqueda
+if ($_POST['tipo'] == 'destacados') {
+    $api->getProductosDestacados();
+}

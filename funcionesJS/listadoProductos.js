@@ -20,9 +20,13 @@ export const listadoProductos = async () => {
         const $section = document.createElement('section');
         $section.setAttribute('id', 'productos-destacados');
 
+        const data = new URLSearchParams();
+        data.append('tipo', 'destacados');
+
         //Variable donde almacenaré la respuesta del fetch
         const res = await fetch(urlProductos, {
             method: 'POST',
+            body: data
         })
 
         //variable en la cual almacenaré la respuesta parseada a JSON
