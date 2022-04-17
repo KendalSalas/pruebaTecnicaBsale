@@ -8,6 +8,9 @@ $h4.setAttribute('id', 'titulo-destacados');
 const $section = document.createElement('section');
 $section.setAttribute('id', 'productos-destacados');
 
+const $divOpciones = document.createElement('div');
+$divOpciones.setAttribute('id', 'orden-productos');
+
 //Referencio al main id destacados del HTML
 const $destacados = document.getElementById('destacados');
 
@@ -18,7 +21,7 @@ export const insertarContenido = (titulo, productos, opciones = '') => {
     $destacados.innerHTML = '';
 
     //Div de opciones para poder ordenar los productos por nombre o valor
-    const $divOpciones = `<div class="btn-group">
+    $divOpciones.innerHTML =  `<div class="btn-group">
                         <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                             Ordenar Por
                         </button>
