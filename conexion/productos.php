@@ -36,4 +36,20 @@ class Productos extends DB
             return "ERROR";
         }
     }
+
+    public function queryProductosNombre($nombre)
+    {
+        //Query para buscar productos en base a su nombre
+        //Estos seran cargados una vez el usuario utilice el campo de buscar
+        $queryProductos = "SELECT id, name, url_image, price, discount FROM product WHERE name LIKE '%$nombre%'";
+        $execProductos  = $this->connect()->query($queryProductos);
+
+        if ($execProductos) {
+            //En caso de que se ejecute, hago un return de la query
+            return $execProductos;
+        } else {
+            //Caso contrario, regreso un error
+            return "ERROR";
+        }
+    }
 }

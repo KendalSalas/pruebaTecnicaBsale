@@ -9,12 +9,19 @@ $api = new ApiProductos();
 if ($_POST['tipo'] == 'destacados') {
     $api->getProductosDestacados();
 } else if($_POST['tipo'] == 'categoria'){
-
     $idCategoria = $_POST['idCategoria'];
 
     if($idCategoria > 0){
         $api->getProductosCategoria($idCategoria);
     } else {
         echo json_encode(array("mensaje" => "No hay productos para mostrar en esta categoria"));
+    }
+} else if($_POST['tipo'] == 'nombre'){
+    $nombre = $_POST['nombre'];
+
+    if($nombre != ''){
+        $api->getProductosNombre($nombre);
+    } else {
+        echo json_encode(array("mensaje" => "Debe ingresar un valor para buscar"));
     }
 }
