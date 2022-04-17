@@ -11,7 +11,7 @@ $section.setAttribute('id', 'productos-destacados');
 //Referencio al main id destacados del HTML
 const $destacados = document.getElementById('destacados');
 
-export const insertarContenido = (titulo, productos, opciones) => {
+export const insertarContenido = (titulo, productos, opciones = '') => {
     $h4.innerHTML = titulo;
     $section.innerHTML = productos;
 
