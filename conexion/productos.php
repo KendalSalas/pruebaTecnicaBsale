@@ -67,7 +67,7 @@ class Productos extends DB
                     return $execProductos;
                 } else {
                     //Caso contrario, regreso un error
-                    return "ERROR";
+                    return "$queryProductos";
                 }
             } else if ($tipoOrden == 'precio') {
                 $queryProductos = "SELECT id, name, url_image, price, discount FROM product ORDER BY price ASC LIMIT 6";
@@ -78,7 +78,7 @@ class Productos extends DB
                     return $execProductos;
                 } else {
                     //Caso contrario, regreso un error
-                    return "ERROR";
+                    return "$queryProductos";
                 }
             }
         }
