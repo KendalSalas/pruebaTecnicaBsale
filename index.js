@@ -10,6 +10,7 @@ listadoCategorias();
 
 d.addEventListener('DOMContentLoaded', () => {
     listadoProductos();
+    document.getElementById('filtro-orden').value = '';
 })
 
 d.addEventListener('click', e => {

@@ -111,7 +111,7 @@ class Productos extends DB
                     return "ERROR TIPO ORDEN $tipoOrden";
                 }
             } else {
-                return "ERROR CATEGORIA ORDENAR $filtroOrden";
+                return "ERROR CATEGORIA ORDENAR, NO LLEGO CATEGORIA";
             }
         } else if ($listadoProductos == 'nombre') {
             if ($filtroOrden != '') {
@@ -141,7 +141,7 @@ class Productos extends DB
                     return "ERROR TIPO ORDEN $tipoOrden";
                 }
             } else {
-                return "ERROR RESULTADOS POR NOMBRE AL ORDENAR $filtroOrden";
+                return "ERROR RESULTADOS POR NOMBRE AL ORDENAR, NO LLEGO EL FILTRO";
             }
         } else {
             return "ERROR LISTADO PRODUCTOS $listadoProductos";
