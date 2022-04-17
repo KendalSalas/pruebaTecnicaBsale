@@ -110,7 +110,7 @@ export const listadoProductosCategoria = async (idCategoria, nombreCategoria) =>
     } catch (error) {
         console.error(`Error ${error}`);
 
-        if (error == 'No hay productos para mostrar en esta categoria') {
+        if (error.message == 'No hay productos para mostrar en esta categoria') {
             document.getElementById('destacados').innerHTML = 'No hay productos para mostrar en esta categoria'; //En caso de existir un error, muestro ese texto para que no se caiga la app
         } else {
             document.getElementById('destacados').innerHTML = 'No hay productos para mostrar ahora mismo';
@@ -171,7 +171,7 @@ export const listadoProductosNombre = async (nombre) => {
         console.error(`Error ${error}`);
 
         //En caso de existir un error, valido cual es, para mostrar un mensaje u otro
-        if (error == 'Ingrese un parametro a buscar') {
+        if (error.message == 'Ingrese un parametro a buscar') {
             document.getElementById('destacados').innerHTML = 'Debe ingresar un nombre para poder buscar';
         } else {
             document.getElementById('destacados').innerHTML = 'No hay productos para mostrar';
