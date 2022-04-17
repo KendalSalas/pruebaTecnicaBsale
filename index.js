@@ -25,11 +25,11 @@ d.addEventListener('click', e => {
     if(e.target.matches('#ul-orden-opt .orden-opt')){
         e.preventDefault();
         //obtengo el tipo y el nombre del orden del elemento al que se clickeo, para determinar que productos debo ordenar y en base a que
-        const tipoOrden = e.target.getAttribute('tipo');
-        const nombreOrden = e.target.getAttribute('orden');
+        const listadoProductosActual = e.target.getAttribute('listado-productos'); //Listado de productos mostrados actualmente
+        const tipoOrden = e.target.getAttribute('tipo-orden'); //Tipo de orden para la query
 
-        console.log(nombreOrden, tipoOrden);
-        listadoProductosOrden(nombreOrden, tipoOrden);
+        console.log(listadoProductosActual, tipoOrden);
+        listadoProductosOrden(listadoProductosActual, tipoOrden);
     }
 })
 

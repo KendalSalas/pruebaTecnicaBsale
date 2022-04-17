@@ -55,9 +55,9 @@ class Productos extends DB
 
     //Query para ordenar los productos
     //El orden será en base al listado que estoy mostrando y el orden que solicite el usuario
-    public function queryProductosOrden($nombreOrden, $tipoOrden)
+    public function queryProductosOrden($listadoProductos, $tipoOrden)
     {
-        if ($nombreOrden == 'destacados') {
+        if ($listadoProductos == 'destacados') {
             if ($tipoOrden == 'nombre') {
                 $queryProductos = "SELECT id, name, url_image, price, discount FROM product ORDER BY name ASC LIMIT 6";
                 $execProductos  = $this->connect()->query($queryProductos);
@@ -84,7 +84,7 @@ class Productos extends DB
                 return "ERROR TIPO ORDEN $tipoOrden";
             }
         } else {
-            return "ERROR NOMBRE ORDEN $nombreOrden";
+            return "ERROR LISTADO PRODUCTOS $listadoProductos";
         }
     }
 }

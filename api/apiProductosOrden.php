@@ -7,13 +7,13 @@ class ApiProductosOrden
 
     //Función para obtener los resultados de los productos ordenados
     //Estos se mostrarán cuando el usuario haga click en una de las opciones para ordenar
-    public function getProductosOrden($nombreOrden, $tipoOrden)
+    public function getProductosOrden($listadoProductos, $tipoOrden)
     {
         $producto = new Productos(); //Primero creo una variable en la cual ire invocando la clase Productos para poder usar sus metodos
 
         $productos = []; //arreglo vacio en el cual iré almacenando los resultados
 
-        $res = $producto->queryProductosOrden($nombreOrden, $tipoOrden); //Variable que invoca la query de productosNombre
+        $res = $producto->queryProductosOrden($listadoProductos, $tipoOrden); //Variable que invoca la query de productosNombre
 
         //Si hay datos, comienzo a procesarlos
         if ($res->num_rows > 0) {
