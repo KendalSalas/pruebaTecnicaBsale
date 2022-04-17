@@ -113,6 +113,36 @@ class Productos extends DB
             } else {
                 return "ERROR CATEGORIA ORDENAR $filtroOrden";
             }
+        } else if ($listadoProductos == 'nombre') {
+            if ($filtroOrden != '') {
+                if ($tipoOrden == 'nombre') {
+                    $queryProductos = "SELECT id, name, url_image, price, discount FROM product WHERE name LIKE '%$filtroOrden%' ORDER BY name ASC";
+                    $execProductos  = $this->connect()->query($queryProductos);
+
+                    if ($execProductos) {
+                        //En caso de que se ejecute, hago un return de la query
+                        return $execProductos;
+                    } else {
+                        //Caso contrario, regreso un error
+                        return "ERROR";
+                    }
+                } else if ($tipoOrden == 'precio') {
+                    $queryProductos = "SELECT id, name, url_image, price, discount FROM product WHERE name LIKE '%$filtroOrden%' ORDER BY price ASC";
+                    $execProductos  = $this->connect()->query($queryProductos);
+
+                    if ($execProductos) {
+                        //En caso de que se ejecute, hago un return de la query
+                        return $execProductos;
+                    } else {
+                        //Caso contrario, regreso un error
+                        return "ERROR";
+                    }
+                } else {
+                    return "ERROR TIPO ORDEN $tipoOrden";
+                }
+            } else {
+                return "ERROR RESULTADOS POR NOMBRE AL ORDENAR $filtroOrden";
+            }
         } else {
             return "ERROR LISTADO PRODUCTOS $listadoProductos";
         }

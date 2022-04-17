@@ -74,6 +74,12 @@ export const listadoProductosNombre = async (nombre) => {
         const titulo = `Resultados para: ${nombre}`; //variable que almacenara el titulo a inyectar en conjunto a los productos
         insertarContenido(titulo, $template);
 
+        //Actualizo datos de los botones para ordenar por precio/nombre
+        document.getElementById('filtro-orden').value = nombre;//Seteo el valor de filtro-orden al nombre del producto que se está buscando
+
+        document.getElementById('tipo-orden-precio').setAttribute('listado-productos', 'nombre');
+        document.getElementById('tipo-orden-nombre').setAttribute('listado-productos', 'nombre');
+
     } catch (error) {
         console.error(`Error ${error}`);
 

@@ -84,6 +84,8 @@ export const listadoProductosOrden = async (listadoProductos, tipoOrden, filtroO
         } else if(listadoProductos == 'categoria'){
             const $nombreLi = document.querySelector(`[id-categoria="${filtroOrden}"]`).getAttribute('nombre-categoria')
             titulo = `Productos ${$nombreLi}`;
+        } else if(listadoProductos == 'nombre'){
+            titulo = `Resultados para ${filtroOrden}`;
         }
         insertarContenido(titulo, $template);
 

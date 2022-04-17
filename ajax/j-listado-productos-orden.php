@@ -15,10 +15,9 @@ if ($listadoProductos != '' && $tipoOrden != '') {
     if (isset($_POST['filtroOrden'])) {
         $filtroOrden = $_POST['filtroOrden'];
 
-        if($listadoProductos == 'categoria'){
+        if($listadoProductos == 'categoria' || $listadoProductos == 'nombre'){
             $api->getProductosOrden($listadoProductos, $tipoOrden, $filtroOrden);
-        }
-
+        } 
     } else {
         $api->getProductosOrden($listadoProductos, $tipoOrden);
     }
