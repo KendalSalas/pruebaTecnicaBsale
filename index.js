@@ -13,7 +13,7 @@ d.addEventListener('DOMContentLoaded', () => {
 })
 
 d.addEventListener('click', e => {
-    if(e.target.matches('.dropdown-item')){
+    if(e.target.matches('#menu-categorias .dropdown-item')){
         e.preventDefault();
         const idCategoria = e.target.getAttribute('id-categoria');
         const nombreCategoria = e.target.getAttribute('nombre-categoria');
@@ -22,7 +22,7 @@ d.addEventListener('click', e => {
         listadoProductosCategoria(idCategoria, nombreCategoria);
     }
 
-    if(e.target.matches('.orden-opt')){
+    if(e.target.matches('#ul-orden-opt .orden-opt')){
         e.preventDefault();
         //obtengo el tipo y el nombre del orden del elemento al que se clickeo, para determinar que productos debo ordenar y en base a que
         const tipoOrden = e.target.getAttribute('tipo');
