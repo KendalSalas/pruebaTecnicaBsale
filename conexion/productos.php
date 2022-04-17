@@ -5,11 +5,11 @@ include_once 'db.php';
 //Clase encargada de realizar las querys a la tabla de productos
 class Productos extends DB
 {
-    //Query para obtener 6 productos de la tabla product ordenados por ID (anteriormente aleatorio, pero hice el cambio para poder utilizar la funcion de orden)
+    //Query para obtener los  productos de la tabla product ordenados por ID (anteriormente aleatorio, pero hice el cambio para poder utilizar la funcion de orden)
     //Estos seran los que se mostrarán la primera vez que cargue la página
     public function queryProductosDestacados()
     {
-        $queryProductos = "SELECT id, name, url_image, price, discount FROM product ORDER BY id ASC LIMIT 6";
+        $queryProductos = "SELECT id, name, url_image, price, discount FROM product ORDER BY id ASC";
         $execProductos  = $this->connect()->query($queryProductos);
 
         if ($execProductos) {
@@ -59,7 +59,7 @@ class Productos extends DB
     {
         if ($listadoProductos == 'destacados') {
             if ($tipoOrden == 'nombre') {
-                $queryProductos = "SELECT id, name, url_image, price, discount FROM product ORDER BY name ASC LIMIT 6";
+                $queryProductos = "SELECT id, name, url_image, price, discount FROM product ORDER BY name ASC";
                 $execProductos  = $this->connect()->query($queryProductos);
 
                 if ($execProductos) {
@@ -70,7 +70,7 @@ class Productos extends DB
                     return "ERROR";
                 }
             } else if ($tipoOrden == 'precio') {
-                $queryProductos = "SELECT id, name, url_image, price, discount FROM product ORDER BY price ASC LIMIT 6";
+                $queryProductos = "SELECT id, name, url_image, price, discount FROM product ORDER BY price ASC";
                 $execProductos  = $this->connect()->query($queryProductos);
 
                 if ($execProductos) {
