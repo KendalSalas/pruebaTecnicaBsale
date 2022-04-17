@@ -1,4 +1,4 @@
-import { listadoCategorias, listadoProductos, listadoProductosCategoria, listadoProductosNombre } from "./funcionesJS/index.js";
+import { listadoCategorias, listadoProductos, listadoProductosCategoria, listadoProductosNombre, listadoProductosOrden } from "./funcionesJS/index.js";
 
 //Archivo en el cual iré importando las distintas funciones y las iré cargando a medida que sea necesario
 
@@ -28,7 +28,8 @@ d.addEventListener('click', e => {
         const tipoOrden = e.target.getAttribute('tipo');
         const nombreOrden = e.target.getAttribute('orden');
 
-        console.log(tipoOrden, nombreOrden);
+        console.log(nombreOrden, tipoOrden);
+        listadoProductosOrden(nombreOrden, tipoOrden);
     }
 })
 
