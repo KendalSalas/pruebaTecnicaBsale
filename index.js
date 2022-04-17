@@ -21,6 +21,15 @@ d.addEventListener('click', e => {
         // console.log(`Id Categoria: ${idCategoria} / Nombre Categoria: ${nombreCategoria}`);
         listadoProductosCategoria(idCategoria, nombreCategoria);
     }
+
+    if(e.target.matches('.orden-opt')){
+        e.preventDefault();
+        //obtengo el tipo y el nombre del orden del elemento al que se clickeo, para determinar que productos debo ordenar y en base a que
+        const tipoOrden = e.target.getAttribute('tipo');
+        const nombreOrden = e.target.getAttribute('orden');
+
+        console.log(tipoOrden, nombreOrden);
+    }
 })
 
 $formBuscarProducto.addEventListener('submit', e => {
