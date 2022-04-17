@@ -81,10 +81,10 @@ class Productos extends DB
                     return "ERROR";
                 }
             } else{
-                return "ERROR TIPO ORDEN";
+                return "ERROR TIPO ORDEN $tipoOrden";
             }
         } else {
-            return "ERROR NOMBRE ORDEN";
+            return "ERROR NOMBRE ORDEN $nombreOrden";
         }
     }
 }
