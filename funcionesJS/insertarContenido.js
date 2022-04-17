@@ -11,12 +11,24 @@ $section.setAttribute('id', 'productos-destacados');
 //Referencio al main id destacados del HTML
 const $destacados = document.getElementById('destacados');
 
-export const insertarContenido = (titulo, productos) => {
+export const insertarContenido = (titulo, productos, opciones) => {
     $h4.innerHTML = titulo;
     $section.innerHTML = productos;
 
     $destacados.innerHTML = '';
 
+    //Div de opciones para poder ordenar los productos por nombre o valor
+    const $divOpciones = `<div class="btn-group">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                            Ordenar Por
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-lg-end">
+                            <li><button class="dropdown-item" type="button" listado="${opciones}" orden="precio">Precio</button></li>
+                            <li><button class="dropdown-item" type="button" listado="${opciones}" orden="precio">Nombre</button></li>
+                        </ul>
+                    </div>`
+
     $destacados.appendChild($h4);
+    $destacados.appendChild($divOpciones);
     $destacados.appendChild($section);
 }
