@@ -26,6 +26,6 @@ d.addEventListener('click', e => {
 $formBuscarProducto.addEventListener('submit', e => {
     e.preventDefault();
     const nombreBuscar = document.getElementById('input-buscar').value;
-    console.log(nombreBuscar);
+    listadoProductosNombre(nombreBuscar);
 })
 
