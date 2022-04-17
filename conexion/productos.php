@@ -55,7 +55,7 @@ class Productos extends DB
 
     //Query para ordenar los productos
     //El orden será en base al listado que estoy mostrando y el orden que solicite el usuario
-    public function queryProductosOrden($listadoProductos, $tipoOrden)
+    public function queryProductosOrden($listadoProductos, $tipoOrden, $filtroOrden = '')
     {
         if ($listadoProductos == 'todos') {
             if ($tipoOrden == 'nombre') {
@@ -80,8 +80,38 @@ class Productos extends DB
                     //Caso contrario, regreso un error
                     return "ERROR";
                 }
-            } else{
+            } else {
                 return "ERROR TIPO ORDEN $tipoOrden";
+            }
+        } else if ($listadoProductos == 'categoria') {
+            if ($filtroOrden != '') {
+                if ($tipoOrden == 'nombre') {
+                    $queryProductos = "SELECT id, name, url_image, price, discount FROM product WHERE category = $filtroOrden ORDER BY name ASC";
+                    $execProductos  = $this->connect()->query($queryProductos);
+
+                    if ($execProductos) {
+                        //En caso de que se ejecute, hago un return de la query
+                        return $execProductos;
+                    } else {
+                        //Caso contrario, regreso un error
+                        return "ERROR";
+                    }
+                } else if ($tipoOrden == 'precio') {
+                    $queryProductos = "SELECT id, name, url_image, price, discount FROM product WHERE category = $filtroOrden ORDER BY price ASC";
+                    $execProductos  = $this->connect()->query($queryProductos);
+
+                    if ($execProductos) {
+                        //En caso de que se ejecute, hago un return de la query
+                        return $execProductos;
+                    } else {
+                        //Caso contrario, regreso un error
+                        return "ERROR";
+                    }
+                } else {
+                    return "ERROR TIPO ORDEN $tipoOrden";
+                }
+            } else {
+                return "ERROR CATEGORIA ORDENAR $filtroOrden";
             }
         } else {
             return "ERROR LISTADO PRODUCTOS $listadoProductos";

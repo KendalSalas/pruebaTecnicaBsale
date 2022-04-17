@@ -27,9 +27,10 @@ d.addEventListener('click', e => {
         //obtengo el tipo y el nombre del orden del elemento al que se clickeo, para determinar que productos debo ordenar y en base a que
         const listadoProductosActual = e.target.getAttribute('listado-productos'); //Listado de productos mostrados actualmente
         const tipoOrden = e.target.getAttribute('tipo-orden'); //Tipo de orden para la query
+        const filtroOrden = document.getElementById('filtro-orden').value;
 
-        console.log(listadoProductosActual, tipoOrden);
-        listadoProductosOrden(listadoProductosActual, tipoOrden);
+        console.log(listadoProductosActual, tipoOrden, filtroOrden);
+        listadoProductosOrden(listadoProductosActual, tipoOrden, filtroOrden);
     }
 })
 
