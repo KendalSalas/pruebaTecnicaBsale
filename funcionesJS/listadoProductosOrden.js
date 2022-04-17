@@ -42,7 +42,7 @@ export const listadoProductosOrden = async (listadoProductos, tipoOrden, filtroO
         if (json.mensaje == 'No hay datos') {
             throw new Error('La consulta no trajo resultados');
         } else if (json.error) {
-            throw new Error('Error al intentar ordenar productos');
+            throw new Error(`Error al intentar ordenar productos ${json.error}`);
         }
 
         //Itero el JSON con un map
