@@ -1,7 +1,7 @@
 <?php
 
 //En este archivo haré uso del archivo apiCategorias, será consultado mediante fetch de JS
-include_once '../api/apiCategorias.php';
+include_once '../api/apiProductos.php';
 
-$api = new ApiCategorias();
-$api->getCategorias();
+$api = new ApiProductos();
+$api->getProductosDestacados();
