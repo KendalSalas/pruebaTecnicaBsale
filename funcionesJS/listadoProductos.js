@@ -1,9 +1,10 @@
+import { insertarContenido } from "./insertarContenido.js";
 import { insertarSpinner } from "./spinner.js";
 
 //Archivo JS en el cual guardaré la función encargada de hacer fetch a listado-productos y listar los resultados en la página
 
 const urlProductos = 'https://prueba-tecnica-bsale.herokuapp.com/ajax/j-listado-productos.php'; //URL a la cual haré fetch
-const $destacados = document.getElementById('destacados'); //Referencio al main id destacados del HTML
+// const $destacados = document.getElementById('destacados'); //Referencio al main id destacados del HTML
 
 //Función asincrona para realizar el fetch a j-listado-productos
 export const listadoProductos = async () => {
@@ -13,12 +14,12 @@ export const listadoProductos = async () => {
         insertarSpinner(); //Inyecto el spinner en $destacados en lo que cargan los productos
 
         //Creo un h4 al cual le daré el titulo de esta llamada
-        const $h4 = document.createElement('h4');
-        $h4.setAttribute('id', 'titulo-destacados');
+        // const $h4 = document.createElement('h4');
+        // $h4.setAttribute('id', 'titulo-destacados');
 
         //creo un section al cual le pasaré los productos obtenidos del fetch
-        const $section = document.createElement('section');
-        $section.setAttribute('id', 'productos-destacados');
+        // const $section = document.createElement('section');
+        // $section.setAttribute('id', 'productos-destacados');
 
         const data = new URLSearchParams();
         data.append('tipo', 'destacados');
@@ -55,17 +56,20 @@ export const listadoProductos = async () => {
         console.log(json);
 
         //La llamada me devuelve un undefined en el primer row, por lo cual lo elimino
-        $template = $template.replaceAll('undefined', '');
+        // $template = $template.replaceAll('undefined', '');
 
-        $h4.innerHTML = 'Productos Destacados'; //Inyecto el titulo en el h4
-        $section.innerHTML = $template; //Guardo todos los productos en el section
-        $destacados.innerHTML = ''; //Limpio el main id destacados, para quitar el spinner
-        $destacados.appendChild($h4); //Agrego el titulo
-        $destacados.appendChild($section); //Agrego los productos
+        // $h4.innerHTML = 'Productos Destacados'; //Inyecto el titulo en el h4
+        // $section.innerHTML = $template; //Guardo todos los productos en el section
+        // $destacados.innerHTML = ''; //Limpio el main id destacados, para quitar el spinner
+        // $destacados.appendChild($h4); //Agrego el titulo
+        // $destacados.appendChild($section); //Agrego los productos
+
+        const titulo = 'Productos Destacados';
+        insertarContenido(titulo, $template);
 
     } catch (error) {
         console.error(`Error ${error}`);
-        $destacados.innerHTML = 'No hay productos para mostrar ahora mismo'; //En caso de existir un error, muestro ese texto para que no se caiga la app
+        document.getElementById('destacados').innerHTML = 'No hay productos para mostrar ahora mismo'; //En caso de existir un error, muestro ese texto para que no se caiga la app
     }
 }
 
