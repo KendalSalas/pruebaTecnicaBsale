@@ -177,10 +177,11 @@ export const listadoProductosNombre = async (nombre) => {
         if (error.message == 'Ingrese un parametro a buscar') {
             $errMsj.innerHTML = 'Debe ingresar un nombre para poder buscar';
             document.getElementById('destacados').innerHTML = '';
-            document.getElementById('destacados').appendChild = $errMsj;
+            document.getElementById('destacados').appendChild($errMsj);
         } else {
             $errMsj.innerHTML = 'No hay productos para mostrar';
-            document.getElementById('destacados').innerHTML = $errMsj;
+            document.getElementById('destacados').innerHTML = '';
+            document.getElementById('destacados').appendChild($errMsj);
         }
     }
 }
