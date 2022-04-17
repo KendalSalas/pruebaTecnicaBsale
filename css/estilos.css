@@ -35,6 +35,15 @@ body {
     box-shadow: 0 0 11px rgba(33, 33, 33, .2);
 }
 
+/* Productos Precio */
+.oferta{
+    font-weight: bold;
+}
+
+.original{
+    text-decoration: line-through;
+}
+
 /* Mensaje de Error */
 #error-msj{
     margin: 200px auto;

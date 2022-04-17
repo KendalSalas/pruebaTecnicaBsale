@@ -37,10 +37,10 @@ export const listadoProductos = async () => {
             let precioOriginal, txtDescuento;
 
             if(descuento > 0){
-                precioOriginal = `<p class="card-text-dscto">Precio $${precio}</p>`;
-                txtDescuento = `<p class="card-text">Oferta $${precio - descuento}</p>`;
+                precioOriginal = `<p class="card-text original">Precio $${precio.toLocaleString('es-CLP')}</p>`;
+                txtDescuento = `<p class="card-text oferta">Oferta $${precio - descuento}</p>`;
             } else {
-                precioOriginal = `<p class="card-text">Precio $${precio}</p>`;
+                precioOriginal = `<p class="card-text">Precio $${precio.toLocaleString('es-CLP')}</p>`;
                 txtDescuento = '';
             }
 
