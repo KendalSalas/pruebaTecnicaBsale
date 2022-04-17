@@ -73,6 +73,7 @@ export const listadoProductosCategoria = async (idCategoria, nombreCategoria) =>
 
         const titulo = `Productos ${nombreCategoria}`; //variable que almacenara el titulo a inyectar en conjunto a los productos
         insertarContenido(titulo, $template);
+        document.getElementById('filtro-orden').value = idCategoria; //Seteo el valor de filtro-orden al id de la categoria actual para poder ordenar en base a ella
 
     } catch (error) {
         console.error(`Error ${error}`);
