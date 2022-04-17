@@ -2,9 +2,7 @@ import { insertarContenido } from "./insertarContenido.js";
 import { insertarSpinner } from "./spinner.js";
 
 //Archivo JS en el cual guardaré la función encargada de hacer fetch a listado-productos y listar los resultados en la página
-
 const urlProductos = 'https://prueba-tecnica-bsale.herokuapp.com/ajax/j-listado-productos.php'; //URL a la cual haré fetch
-// const $destacados = document.getElementById('destacados'); //Referencio al main id destacados del HTML
 
 //Función asincrona para realizar el fetch a j-listado-productos
 export const listadoProductos = async () => {
@@ -12,14 +10,6 @@ export const listadoProductos = async () => {
 
     try {
         insertarSpinner(); //Inyecto el spinner en $destacados en lo que cargan los productos
-
-        //Creo un h4 al cual le daré el titulo de esta llamada
-        // const $h4 = document.createElement('h4');
-        // $h4.setAttribute('id', 'titulo-destacados');
-
-        //creo un section al cual le pasaré los productos obtenidos del fetch
-        // const $section = document.createElement('section');
-        // $section.setAttribute('id', 'productos-destacados');
 
         const data = new URLSearchParams();
         data.append('tipo', 'destacados');
@@ -58,13 +48,7 @@ export const listadoProductos = async () => {
         //La llamada me devuelve un undefined en el primer row, por lo cual lo elimino
         $template = $template.replaceAll('undefined', '');
 
-        // $h4.innerHTML = 'Productos Destacados'; //Inyecto el titulo en el h4
-        // $section.innerHTML = $template; //Guardo todos los productos en el section
-        // $destacados.innerHTML = ''; //Limpio el main id destacados, para quitar el spinner
-        // $destacados.appendChild($h4); //Agrego el titulo
-        // $destacados.appendChild($section); //Agrego los productos
-
-        const titulo = 'Productos Destacados';
+        const titulo = 'Productos Destacados'; //variable que almacenara el titulo a inyectar en conjunto a los productos
         insertarContenido(titulo, $template);
 
     } catch (error) {
@@ -73,19 +57,12 @@ export const listadoProductos = async () => {
     }
 }
 
+//Función asincrona para realizar el fetch a j-listado-productos, enviando como tipo = categorias y un idCategoria por POST
 export const listadoProductosCategoria = async (idCategoria, nombreCategoria) => {
     let $template; //Variable que almacenará los resultados del fetch
 
     try {
         insertarSpinner(); //Inyecto el spinner en $destacados en lo que cargan los productos
-
-        //Creo un h4 al cual le daré el titulo de esta llamada
-        const $h4 = document.createElement('h4');
-        $h4.setAttribute('id', 'titulo-destacados');
-
-        //creo un section al cual le pasaré los productos obtenidos del fetch
-        const $section = document.createElement('section');
-        $section.setAttribute('id', 'productos-destacados');
 
         const data = new URLSearchParams();
         data.append('tipo', 'categoria');
@@ -120,16 +97,13 @@ export const listadoProductosCategoria = async (idCategoria, nombreCategoria) =>
                         </div>`;
         })
 
-        console.log(json);
+        // console.log(json);
 
         //La llamada me devuelve un undefined en el primer row, por lo cual lo elimino
         $template = $template.replaceAll('undefined', '');
 
-        $h4.innerHTML = `Productos ${nombreCategoria}`; //Inyecto el titulo en el h4
-        $section.innerHTML = $template; //Guardo todos los productos en el section
-        $destacados.innerHTML = ''; //Limpio el main id destacados, para quitar el spinner
-        $destacados.appendChild($h4); //Agrego el titulo
-        $destacados.appendChild($section); //Agrego los productos
+        const titulo = `Productos ${nombreCategoria}`; //variable que almacenara el titulo a inyectar en conjunto a los productos
+        insertarContenido(titulo, $template);
 
     } catch (error) {
         console.error(`Error ${error}`);
