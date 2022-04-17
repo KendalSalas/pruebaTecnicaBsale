@@ -56,16 +56,10 @@ export const listadoProductos = async () => {
     } catch (error) {
         console.error(`Error ${error}`);
 
-        //En caso de existir un error, creo un h5 con un id error-msj
-        const $errMsj = document.createElement('h5');
-        $errMsj.setAttribute('id', 'error-msj');
-
-        //Le agrego un texto a la variable $errMsj
-        $errMsj.innerHTML = 'No hay productos para mostrar ahora mismo'; //En caso de existir un error, muestro ese texto para que no se caiga la app
-
         //Limpio el main destacados para luego agregar la variable $errMsj
         document.getElementById('destacados').innerHTML = '';
-        document.getElementById('destacados').appendChild($errMsj);
+
+        mensajeError('No hay productos para mostrar ahora mismo');
 
     }
 }
@@ -122,20 +116,14 @@ export const listadoProductosCategoria = async (idCategoria, nombreCategoria) =>
     } catch (error) {
         console.error(`Error ${error}`);
 
-        //En caso de existir un error, creo un H5 con un id error-msj
-        const $errMsj = document.createElement('h5');
-        $errMsj.setAttribute('id', 'error-msj');
-
         //Limpio el main destacados
         document.getElementById('destacados').innerHTML = '';
 
         //Creo el mensaje de error y lo inyecto en el main destacados
         if (error.message == 'No hay productos para mostrar en esta categoria') {
-            $errMsj.innerHTML = 'No hay productos para mostrar en esta categoria'; //En caso de existir un error, muestro ese texto para que no se caiga la app
-            document.getElementById('destacados').appendChild($errMsj);
+            mensajeError('No hay productos para mostrar en esta categoria.');
         } else {
-            $errMsj.innerHTML = 'No hay productos para mostrar ahora mismo';
-            document.getElementById('destacados').appendChild($errMsj);
+            mensajeError('No hay productos para mostrar ahora mismo');
         }
     }
 }
@@ -192,24 +180,13 @@ export const listadoProductosNombre = async (nombre) => {
     } catch (error) {
         console.error(`Error ${error}`);
 
-        // //En caso de existir un error, creo un H5 con un id error-msj
-        // const $errMsj = document.createElement('h5');
-        // $errMsj.setAttribute('id', 'error-msj');
-
-        // //Limpio el main destacados
+        //Limpio el main destacados
         document.getElementById('destacados').innerHTML = '';
 
         //En caso de existir un error, valido cual es, para mostrar un mensaje u otro y luego inyectarlo en el main destacados
         if (error.message == 'Ingrese un parametro a buscar') {
-            // $errMsj.innerHTML = 'Debe ingresar un nombre para poder buscar';
-            // document.getElementById('destacados').appendChild($errMsj);
-
             mensajeError('Debe ingresar un nombre para poder buscar.');
-
         } else {
-            // $errMsj.innerHTML = 'No hay productos para mostrar';
-            // document.getElementById('destacados').appendChild($errMsj);
-
             mensajeError('No hay resultados para mostrar.')
         }
     }
