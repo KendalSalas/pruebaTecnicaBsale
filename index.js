@@ -4,6 +4,7 @@ import { listadoCategorias, listadoProductos, listadoProductosCategoria } from "
 
 const d = document;
 
+const $formBuscarProducto = document.getElementById('buscar-producto');
 //Invoco la funcion listadoCategorias, para llenar el menu de las categorias con las opciones desde la BBDD
 listadoCategorias();
 
@@ -21,3 +22,10 @@ d.addEventListener('click', e => {
         listadoProductosCategoria(idCategoria, nombreCategoria);
     }
 })
+
+$formBuscarProducto.addEventListener('submit', e => {
+    e.preventDefault();
+    const nombreBuscar = document.getElementById('input-buscar').value;
+    console.log(nombreBuscar);
+})
+
