@@ -54,7 +54,18 @@ export const listadoProductos = async () => {
 
     } catch (error) {
         console.error(`Error ${error}`);
-        document.getElementById('destacados').innerHTML = 'No hay productos para mostrar ahora mismo'; //En caso de existir un error, muestro ese texto para que no se caiga la app
+
+        //En caso de existir un error, creo un h5 con un id error-msj
+        const $errMsj = document.createElement('h5');
+        $errMsj.setAttribute('id', 'error-msj');
+
+        //Le agrego un texto a la variable $errMsj
+        $errMsj.innerHTML = 'No hay productos para mostrar ahora mismo'; //En caso de existir un error, muestro ese texto para que no se caiga la app
+
+        //Limpio el main destacados para luego agregar la variable $errMsj
+        document.getElementById('destacados').innerHTML = '';
+        document.getElementById('destacados').appendChild($errMsj);
+
     }
 }
 
@@ -110,10 +121,20 @@ export const listadoProductosCategoria = async (idCategoria, nombreCategoria) =>
     } catch (error) {
         console.error(`Error ${error}`);
 
+        //En caso de existir un error, creo un H5 con un id error-msj
+        const $errMsj = document.createElement('h5');
+        $errMsj.setAttribute('id', 'error-msj');
+
+        //Limpio el main destacados
+        document.getElementById('destacados').innerHTML = '';
+
+        //Creo el mensaje de error y lo inyecto en el main destacados
         if (error.message == 'No hay productos para mostrar en esta categoria') {
-            document.getElementById('destacados').innerHTML = 'No hay productos para mostrar en esta categoria'; //En caso de existir un error, muestro ese texto para que no se caiga la app
+            $errMsj.innerHTML = 'No hay productos para mostrar en esta categoria'; //En caso de existir un error, muestro ese texto para que no se caiga la app
+            document.getElementById('destacados').appendChild($errMsj);
         } else {
-            document.getElementById('destacados').innerHTML = 'No hay productos para mostrar ahora mismo';
+            $errMsj.innerHTML = 'No hay productos para mostrar ahora mismo';
+            document.getElementById('destacados').appendChild($errMsj);
         }
     }
 }
@@ -170,17 +191,19 @@ export const listadoProductosNombre = async (nombre) => {
     } catch (error) {
         console.error(`Error ${error}`);
 
+        //En caso de existir un error, creo un H5 con un id error-msj
         const $errMsj = document.createElement('h5');
         $errMsj.setAttribute('id', 'error-msj');
 
-        //En caso de existir un error, valido cual es, para mostrar un mensaje u otro
+        //Limpio el main destacados
+        document.getElementById('destacados').innerHTML = '';
+
+        //En caso de existir un error, valido cual es, para mostrar un mensaje u otro y luego inyectarlo en el main destacados
         if (error.message == 'Ingrese un parametro a buscar') {
             $errMsj.innerHTML = 'Debe ingresar un nombre para poder buscar';
-            document.getElementById('destacados').innerHTML = '';
             document.getElementById('destacados').appendChild($errMsj);
         } else {
             $errMsj.innerHTML = 'No hay productos para mostrar';
-            document.getElementById('destacados').innerHTML = '';
             document.getElementById('destacados').appendChild($errMsj);
         }
     }
