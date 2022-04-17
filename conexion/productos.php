@@ -59,7 +59,7 @@ class Productos extends DB
     {
         if ($nombreOrden == 'destacados') {
             if ($tipoOrden == 'nombre') {
-                $queryProductos = "SELECT id, name, url_image, price, discount FROM product ORDER BY name ASC";
+                $queryProductos = "SELECT id, name, url_image, price, discount FROM product ORDER BY name ASC LIMIT 6";
                 $execProductos  = $this->connect()->query($queryProductos);
 
                 if ($execProductos) {
@@ -70,7 +70,7 @@ class Productos extends DB
                     return "ERROR";
                 }
             } else if ($tipoOrden == 'precio') {
-                $queryProductos = "SELECT id, name, url_image, price, discount FROM product ORDER BY price ASC";
+                $queryProductos = "SELECT id, name, url_image, price, discount FROM product ORDER BY price ASC LIMIT 6";
                 $execProductos  = $this->connect()->query($queryProductos);
 
                 if ($execProductos) {
