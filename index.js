@@ -10,7 +10,9 @@ listadoCategorias();
 
 d.addEventListener('DOMContentLoaded', () => {
     listadoProductos();
+    //Limpio el input filtro orden y el input-buscar por cada vez que se refresque la página
     document.getElementById('filtro-orden').value = '';
+    document.getElementById('input-buscar').value = '';
 })
 
 d.addEventListener('click', e => {
