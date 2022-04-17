@@ -33,10 +33,10 @@ class ApiProductosOrden
 
             //Una vez termino de iterar, hago un echo del arreglo productos parseado a JSON
             echo json_encode($productos);
-        } else if($res == 'ERROR') {
-            //En caso contrario, hago un echo con un arreglo que contiene el mensaje de error como JSON
+        } else if($res == 'ERROR') { //En caso contrario, primero valido si $res es igual a ERROR
             echo json_encode(array("mensaje" => "No hay datos"));
         } else {
+            //Si no lo es, entonces muestro el error especifico para corregir
             echo json_encode(array("error" => $res));
         }
     }
