@@ -8,11 +8,12 @@ const $formBuscarProducto = document.getElementById('buscar-producto');
 //Invoco la funcion listadoCategorias, para llenar el menu de las categorias con las opciones desde la BBDD
 listadoCategorias();
 
+//Limpio el input filtro orden y el input-buscar por cada vez que se refresque la página
+document.getElementById('filtro-orden').value = '';
+document.getElementById('input-buscar').value = '';
+
 d.addEventListener('DOMContentLoaded', () => {
     listadoProductos();
-    //Limpio el input filtro orden y el input-buscar por cada vez que se refresque la página
-    document.getElementById('filtro-orden').value = '';
-    document.getElementById('input-buscar').value = '';
 })
 
 d.addEventListener('click', e => {
