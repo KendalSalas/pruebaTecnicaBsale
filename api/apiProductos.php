@@ -105,4 +105,5 @@ class ApiProductos
             echo json_encode(array("mensaje" => "No hay datos"));
         }
     }
+
 }
