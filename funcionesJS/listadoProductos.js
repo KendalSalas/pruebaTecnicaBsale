@@ -5,6 +5,13 @@ import { mensajeError } from "./mensajeError.js";
 //Archivo JS en el cual guardaré la función encargada de hacer fetch a listado-productos y listar los resultados en la página
 const urlProductos = 'https://prueba-tecnica-bsale.herokuapp.com/ajax/j-listado-productos.php'; //URL a la cual haré fetch
 
+//Estilo a las monedas como CLP
+const formatter = new Intl.NumberFormat('es-CL', {
+    style: 'currency',
+    currency: 'CLP',
+});
+
+
 //Función asincrona para realizar el fetch a j-listado-productos
 export const listadoProductos = async () => {
     let $template; //Variable que almacenará los resultados del fetch
@@ -34,13 +41,16 @@ export const listadoProductos = async () => {
         json.map(producto => {
             const { id, nombre, fotoUrl, precio, descuento } = producto; //Obtengo los datos del producto
 
+            const precioFormat = formatter.format(precio);
+
             let precioOriginal, txtDescuento;
 
-            if(descuento > 0){
-                precioOriginal = `<p class="card-text original">Precio $${precio.toLocaleString('es-CLP')}</p>`;
-                txtDescuento = `<p class="card-text oferta">Oferta $${precio - descuento}</p>`;
+            if (descuento > 0) {
+                const precioOferta = formatter.format(precio - descuento);
+                precioOriginal = `<p class="card-text original">Precio $${precioFormat}</p>`;
+                txtDescuento = `<p class="card-text oferta">Oferta $${precioOferta}</p>`;
             } else {
-                precioOriginal = `<p class="card-text">Precio $${precio.toLocaleString('es-CLP')}</p>`;
+                precioOriginal = `<p class="card-text">Precio $${precioFormat}</p>`;
                 txtDescuento = '';
             }
 
