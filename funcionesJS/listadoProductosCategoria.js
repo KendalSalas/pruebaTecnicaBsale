@@ -11,9 +11,8 @@ const formatter = new Intl.NumberFormat('es-CL', {
     currency: 'CLP',
 });
 
-
-//Función asincrona para realizar el fetch a j-listado-productos
-export const listadoProductos = async () => {
+//Función asincrona para realizar el fetch a j-listado-productos, enviando como tipo = categorias y un idCategoria por POST
+export const listadoProductosCategoria = async (idCategoria, nombreCategoria) => {
     let $template; //Variable que almacenará los resultados del fetch
 
     try {
@@ -21,7 +20,8 @@ export const listadoProductos = async () => {
 
         //Creo una variable data a la cual le pasare parametros para enviarlo por POST
         const data = new URLSearchParams();
-        data.append('tipo', 'destacados'); //Le paso un tipo = destacados, para indicar que me traiga solo 6 productos aleatorios al cargar la página por primera vez
+        data.append('tipo', 'categoria'); //Le paso el tipo categoria, para indicar que buscará productos en base a la categoria
+        data.append('idCategoria', idCategoria); //Le paso el ID de la categoria a filtrar
 
         //Variable donde almacenaré la respuesta del fetch
         const res = await fetch(urlProductos, {
@@ -34,7 +34,7 @@ export const listadoProductos = async () => {
 
         //En caso de que me devuelva un mensaje de error, lo lanzo al catch con un Error
         if (json.mensaje == 'No hay datos') {
-            throw new Error('No hay productos para mostrar');
+            throw new Error('No hay productos para mostrar en esta categoria');
         }
 
         //Itero el JSON con un map
@@ -66,21 +66,25 @@ export const listadoProductos = async () => {
                         </div>`;
         })
 
-        console.log(json);
+        // console.log(json);
 
         //La llamada me devuelve un undefined en el primer row, por lo cual lo elimino
         $template = $template.replaceAll('undefined', '');
 
-        const titulo = 'Productos Destacados'; //variable que almacenara el titulo a inyectar en conjunto a los productos
+        const titulo = `Productos ${nombreCategoria}`; //variable que almacenara el titulo a inyectar en conjunto a los productos
         insertarContenido(titulo, $template);
 
     } catch (error) {
         console.error(`Error ${error}`);
 
-        //Limpio el main destacados para luego agregar la variable $errMsj
+        //Limpio el main destacados
         document.getElementById('destacados').innerHTML = '';
 
-        mensajeError('No hay productos para mostrar ahora mismo');
-
+        //Creo el mensaje de error y lo inyecto en el main destacados
+        if (error.message == 'No hay productos para mostrar en esta categoria') {
+            mensajeError('No hay productos para mostrar en esta categoria.');
+        } else {
+            mensajeError('No hay productos para mostrar ahora mismo');
+        }
     }
 }

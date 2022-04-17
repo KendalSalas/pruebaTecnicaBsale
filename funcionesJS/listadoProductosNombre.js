@@ -11,9 +11,8 @@ const formatter = new Intl.NumberFormat('es-CL', {
     currency: 'CLP',
 });
 
-
-//Función asincrona para realizar el fetch a j-listado-productos
-export const listadoProductos = async () => {
+//Función asincrona para realizar el fetch a j-listado-productos, enviando como tipo = nombre y el nombre a buscar por POST
+export const listadoProductosNombre = async (nombre) => {
     let $template; //Variable que almacenará los resultados del fetch
 
     try {
@@ -21,7 +20,8 @@ export const listadoProductos = async () => {
 
         //Creo una variable data a la cual le pasare parametros para enviarlo por POST
         const data = new URLSearchParams();
-        data.append('tipo', 'destacados'); //Le paso un tipo = destacados, para indicar que me traiga solo 6 productos aleatorios al cargar la página por primera vez
+        data.append('tipo', 'nombre'); //Le paso un tipo = nombre, para indicar que estará buscando productos en base a su nombre
+        data.append('nombre', nombre); //Le paso el nombre a buscar
 
         //Variable donde almacenaré la respuesta del fetch
         const res = await fetch(urlProductos, {
@@ -33,8 +33,8 @@ export const listadoProductos = async () => {
         const json = await res.json();
 
         //En caso de que me devuelva un mensaje de error, lo lanzo al catch con un Error
-        if (json.mensaje == 'No hay datos') {
-            throw new Error('No hay productos para mostrar');
+        if (json.mensaje == 'Debe ingresar un valor para buscar') {
+            throw new Error('Ingrese un parametro a buscar');
         }
 
         //Itero el JSON con un map
@@ -66,21 +66,25 @@ export const listadoProductos = async () => {
                         </div>`;
         })
 
-        console.log(json);
+        // console.log(json);
 
         //La llamada me devuelve un undefined en el primer row, por lo cual lo elimino
         $template = $template.replaceAll('undefined', '');
 
-        const titulo = 'Productos Destacados'; //variable que almacenara el titulo a inyectar en conjunto a los productos
+        const titulo = `Resultados para: ${nombre}`; //variable que almacenara el titulo a inyectar en conjunto a los productos
         insertarContenido(titulo, $template);
 
     } catch (error) {
         console.error(`Error ${error}`);
 
-        //Limpio el main destacados para luego agregar la variable $errMsj
+        //Limpio el main destacados
         document.getElementById('destacados').innerHTML = '';
 
-        mensajeError('No hay productos para mostrar ahora mismo');
-
+        //En caso de existir un error, valido cual es, para mostrar un mensaje u otro y luego inyectarlo en el main destacados
+        if (error.message == 'Ingrese un parametro a buscar') {
+            mensajeError('Debe ingresar un nombre para poder buscar.');
+        } else {
+            mensajeError('No hay resultados para mostrar.')
+        }
     }
 }
