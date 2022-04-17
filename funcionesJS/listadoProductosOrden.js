@@ -37,7 +37,7 @@ export const listadoProductosOrden = async (listadoProductos, tipoOrden) => {
         //En caso de que me devuelva un mensaje de error, lo lanzo al catch con un Error
         if (json.mensaje == 'Debe ingresar un valor para buscar') {
             throw new Error('Ingrese un parametro a buscar');
-        } else if(json.error-tipo){
+        } else if(json.error){
             throw new Error('Error al intentar ordenar productos');
         }
 
