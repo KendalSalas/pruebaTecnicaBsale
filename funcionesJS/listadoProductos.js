@@ -34,13 +34,24 @@ export const listadoProductos = async () => {
         json.map(producto => {
             const { id, nombre, fotoUrl, precio, descuento } = producto; //Obtengo los datos del producto
 
+            let precioOriginal, txtDescuento;
+
+            if(descuento > 0){
+                precioOriginal = `<p class="card-text-dscto">Precio $${precio}</p>`;
+                txtDescuento = `<p class="card-text">Oferta $${precio - descuento}</p>`;
+            } else {
+                precioOriginal = `<p class="card-text">Precio $${precio}</p>`;
+                txtDescuento = '';
+            }
+
             //Creo un card en el cual mostraré el producto
             //Este lo guardo en la variable template
             $template += `<div class="card" style="width: 16rem;">
                             <img src="${fotoUrl}" class="card-img-top" alt="Producto ${nombre}">
                             <div class="card-body">
                                 <h5 class="card-title">${nombre}</h5>
-                                <p class="card-text">Precio $${precio}</p>
+                                ${precioOriginal}
+                                ${txtDescuento}
                             </div>
                         </div>`;
         })
