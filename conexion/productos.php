@@ -12,13 +12,28 @@ class Productos extends DB
         $queryProductos = "SELECT id, name, url_image, price, discount FROM product ORDER BY RAND() LIMIT 6";
         $execProductos  = $this->connect()->query($queryProductos);
 
-        if($execProductos){
+        if ($execProductos) {
             //En caso de que se ejecute, hago un return de la query
             return $execProductos;
         } else {
             //Caso contrario, regreso un error
             return "ERROR";
         }
-        
+    }
+
+    public function queryProductosCategoria($idCategoria)
+    {
+        //Query para obtener los productos de una categoria en especifico
+        //Estos seran cargados una vez el usuario haga click en una de las categorias del menu tienda
+        $queryProductos = "SELECT id, name, url_image, price, discount FROM product WHERE category = $idCategoria";
+        $execProductos  = $this->connect()->query($queryProductos);
+
+        if ($execProductos) {
+            //En caso de que se ejecute, hago un return de la query
+            return $execProductos;
+        } else {
+            //Caso contrario, regreso un error
+            return "ERROR";
+        }
     }
 }
