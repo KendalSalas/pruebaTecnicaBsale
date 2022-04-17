@@ -72,7 +72,7 @@ export const listadoProductos = async () => {
         $template = $template.replaceAll('undefined', '');
 
         const titulo = 'Productos Destacados'; //variable que almacenara el titulo a inyectar en conjunto a los productos
-        insertarContenido(titulo, $template, 'destacados');
+        insertarContenido(titulo, $template);
 
     } catch (error) {
         console.error(`Error ${error}`);
