@@ -4,8 +4,6 @@
 const $errMsj = document.createElement('h5');
 $errMsj.setAttribute('id', 'error-msj');
 
-//Limpio el main destacados
-document.getElementById('destacados').innerHTML = '';
 
 export const mensajeError = (mensaje) => {
     $errMsj.innerHTML = mensaje;

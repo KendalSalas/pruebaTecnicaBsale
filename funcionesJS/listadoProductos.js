@@ -197,7 +197,7 @@ export const listadoProductosNombre = async (nombre) => {
         // $errMsj.setAttribute('id', 'error-msj');
 
         // //Limpio el main destacados
-        // document.getElementById('destacados').innerHTML = '';
+        document.getElementById('destacados').innerHTML = '';
 
         //En caso de existir un error, valido cual es, para mostrar un mensaje u otro y luego inyectarlo en el main destacados
         if (error.message == 'Ingrese un parametro a buscar') {
