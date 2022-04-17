@@ -5,11 +5,11 @@ include_once 'db.php';
 //Clase encargada de realizar las querys a la tabla de productos
 class Productos extends DB
 {
-    //Query para obtener 6 productos de la tabla product ordenados aleatoriamente
+    //Query para obtener 6 productos de la tabla product ordenados por ID (anteriormente aleatorio, pero hice el cambio para poder utilizar la funcion de orden)
     //Estos seran los que se mostrarán la primera vez que cargue la página
     public function queryProductosDestacados()
     {
-        $queryProductos = "SELECT id, name, url_image, price, discount FROM product ORDER BY RAND() LIMIT 6";
+        $queryProductos = "SELECT id, name, url_image, price, discount FROM product ORDER BY id ASC LIMIT 6";
         $execProductos  = $this->connect()->query($queryProductos);
 
         if ($execProductos) {
