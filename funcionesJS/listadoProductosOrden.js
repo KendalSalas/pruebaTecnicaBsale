@@ -30,43 +30,43 @@ export const listadoProductosOrden = async (nombreOrden, tipoOrden) => {
         })
 
         //variable en la cual almacenaré la respuesta parseada a JSON
-        const json = await res.json();
+        const json = await res.text();
+
+        console.log(json);
 
         //En caso de que me devuelva un mensaje de error, lo lanzo al catch con un Error
-        if (json.mensaje == 'Debe ingresar un valor para buscar') {
-            throw new Error('Ingrese un parametro a buscar');
-        }
+        // if (json.mensaje == 'Debe ingresar un valor para buscar') {
+        //     throw new Error('Ingrese un parametro a buscar');
+        // }
 
         //Itero el JSON con un map
-        json.map(producto => {
-            const { id, nombre, fotoUrl, precio, descuento } = producto; //Obtengo los datos del producto
+        // json.map(producto => {
+        //     const { id, nombre, fotoUrl, precio, descuento } = producto; //Obtengo los datos del producto
 
-            const precioFormat = formatter.format(precio);
+        //     const precioFormat = formatter.format(precio);
 
-            let precioOriginal, txtDescuento;
+        //     let precioOriginal, txtDescuento;
 
-            if (descuento > 0) {
-                const precioOferta = formatter.format(precio - descuento);
-                precioOriginal = `<p class="card-text original">Precio ${precioFormat}</p>`;
-                txtDescuento = `<p class="card-text oferta">Oferta ${precioOferta}</p>`;
-            } else {
-                precioOriginal = `<p class="card-text">Precio ${precioFormat}</p>`;
-                txtDescuento = '';
-            }
+        //     if (descuento > 0) {
+        //         const precioOferta = formatter.format(precio - descuento);
+        //         precioOriginal = `<p class="card-text original">Precio ${precioFormat}</p>`;
+        //         txtDescuento = `<p class="card-text oferta">Oferta ${precioOferta}</p>`;
+        //     } else {
+        //         precioOriginal = `<p class="card-text">Precio ${precioFormat}</p>`;
+        //         txtDescuento = '';
+        //     }
 
-            //Creo un card en el cual mostraré el producto
-            //Este lo guardo en la variable template
-            $template += `<div class="card" style="width: 16rem;">
-                            <img src="${fotoUrl}" class="card-img-top" alt="Producto ${nombre}">
-                            <div class="card-body">
-                                <h5 class="card-title">${nombre}</h5>
-                                ${precioOriginal}
-                                ${txtDescuento}
-                            </div>
-                        </div>`;
-        })
-
-        // console.log(json);
+        //     //Creo un card en el cual mostraré el producto
+        //     //Este lo guardo en la variable template
+        //     $template += `<div class="card" style="width: 16rem;">
+        //                     <img src="${fotoUrl}" class="card-img-top" alt="Producto ${nombre}">
+        //                     <div class="card-body">
+        //                         <h5 class="card-title">${nombre}</h5>
+        //                         ${precioOriginal}
+        //                         ${txtDescuento}
+        //                     </div>
+        //                 </div>`;
+        // })
 
         //La llamada me devuelve un undefined en el primer row, por lo cual lo elimino
         $template = $template.replaceAll('undefined', '');
