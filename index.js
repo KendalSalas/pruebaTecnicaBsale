@@ -13,7 +13,7 @@ d.addEventListener('DOMContentLoaded', () => {
 })
 
 d.addEventListener('click', e => {
-    if(e.target.matches('#menu-categorias .dropdown-item')){
+    if (e.target.matches('#menu-categorias .dropdown-item')) {
         e.preventDefault();
         const idCategoria = e.target.getAttribute('id-categoria');
         const nombreCategoria = e.target.getAttribute('nombre-categoria');
@@ -22,15 +22,21 @@ d.addEventListener('click', e => {
         listadoProductosCategoria(idCategoria, nombreCategoria);
     }
 
-    if(e.target.matches('#ul-orden-opt .orden-opt')){
+    if (e.target.matches('#ul-orden-opt .orden-opt')) {
         e.preventDefault();
         //obtengo el tipo y el nombre del orden del elemento al que se clickeo, para determinar que productos debo ordenar y en base a que
         const listadoProductosActual = e.target.getAttribute('listado-productos'); //Listado de productos mostrados actualmente
         const tipoOrden = e.target.getAttribute('tipo-orden'); //Tipo de orden para la query
-        const filtroOrden = document.getElementById('filtro-orden').value;
 
-        console.log(listadoProductosActual, tipoOrden, filtroOrden);
-        listadoProductosOrden(listadoProductosActual, tipoOrden, filtroOrden);
+        if (listadoProductosActual != 'todos') {
+            console.log(listadoProductosActual, tipoOrden);
+            listadoProductosOrden(listadoProductosActual, tipoOrden);
+        } else {
+            const filtroOrden = document.getElementById('filtro-orden').value;
+            console.log(listadoProductosActual, tipoOrden, filtroOrden);
+            listadoProductosOrden(listadoProductosActual, tipoOrden, filtroOrden);
+        }
+
     }
 })
 

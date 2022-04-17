@@ -12,7 +12,7 @@ $tipoOrden = $_POST['tipoOrden']; //Variable que almacenará el tipo de orden pa
 
 if ($listadoProductos != '' && $tipoOrden != '') {
 
-    if (isset($_POST['filtroOrden'])) {
+    if (isset($_POST['filtroOrden']) && $_POST['filtroOrden'] != '') {
         $filtroOrden = $_POST['filtroOrden'];
 
         if($listadoProductos == 'categoria' || $listadoProductos == 'nombre'){
