@@ -4,7 +4,7 @@ include_once '../api/apiProductosOrden.php';
 
 $api = new ApiProductosOrden();
 
-//Variable que almacenará los productos que estoy listando actualmente (destacados / categoria / resultados)
+//Variable que almacenará los productos que estoy listando actualmente (todos / categoria / resultados)
 //Esto para poder ordenar los productos de ese listado
 $listadoProductos = $_POST['listadoProductos']; 
 

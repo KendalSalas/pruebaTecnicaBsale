@@ -7,7 +7,7 @@ class Productos extends DB
 {
     //Query para obtener los  productos de la tabla product ordenados por ID (anteriormente aleatorio, pero hice el cambio para poder utilizar la funcion de orden)
     //Estos seran los que se mostrarán la primera vez que cargue la página
-    public function queryProductosDestacados()
+    public function queryProductos()
     {
         $queryProductos = "SELECT id, name, url_image, price, discount FROM product ORDER BY id ASC";
         $execProductos  = $this->connect()->query($queryProductos);
@@ -57,7 +57,7 @@ class Productos extends DB
     //El orden será en base al listado que estoy mostrando y el orden que solicite el usuario
     public function queryProductosOrden($listadoProductos, $tipoOrden)
     {
-        if ($listadoProductos == 'destacados') {
+        if ($listadoProductos == 'todos') {
             if ($tipoOrden == 'nombre') {
                 $queryProductos = "SELECT id, name, url_image, price, discount FROM product ORDER BY name ASC";
                 $execProductos  = $this->connect()->query($queryProductos);

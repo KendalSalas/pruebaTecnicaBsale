@@ -5,14 +5,14 @@ include_once '../conexion/productos.php';
 //Clase para invocar las funciones del archivo productos.php
 class ApiProductos
 {
-    //Función para obtener 6 productos aleatorios, los cuales se mostrarán en la página al cargar por primera vez
-    public function getProductosDestacados()
+    //Función para obtener todos lso productos sin orden, los cuales se mostrarán en la página al cargar por primera vez
+    public function getProductos()
     {
         $producto = new Productos(); //Primero creo una variable en la cual ire invocando la clase Productos para poder usar sus metodos
 
         $productos = []; //arreglo vacio en el cual iré almacenando los resultados
 
-        $res = $producto->queryProductosDestacados(); //Variable que invoca la query de productosDestacados
+        $res = $producto->queryProductos(); //Variable que invoca la query de productos
 
         //Si hay datos, comienzo a procesarlos
         if ($res->num_rows > 0) {

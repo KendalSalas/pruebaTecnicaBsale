@@ -21,7 +21,7 @@ export const listadoProductos = async () => {
 
         //Creo una variable data a la cual le pasare parametros para enviarlo por POST
         const data = new URLSearchParams();
-        data.append('tipo', 'destacados'); //Le paso un tipo = destacados, para indicar que me traiga solo 6 productos aleatorios al cargar la página por primera vez
+        data.append('tipo', 'todos'); //Le paso un tipo = todos, para indicar que me traiga todos los productos al cargar la página por primera vez
 
         //Variable donde almacenaré la respuesta del fetch
         const res = await fetch(urlProductos, {
@@ -71,7 +71,7 @@ export const listadoProductos = async () => {
         //La llamada me devuelve un undefined en el primer row, por lo cual lo elimino
         $template = $template.replaceAll('undefined', '');
 
-        const titulo = 'Productos Destacados'; //variable que almacenara el titulo a inyectar en conjunto a los productos
+        const titulo = 'Productos'; //variable que almacenara el titulo a inyectar en conjunto a los productos
         insertarContenido(titulo, $template);
 
     } catch (error) {

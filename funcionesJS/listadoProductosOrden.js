@@ -75,8 +75,8 @@ export const listadoProductosOrden = async (listadoProductos, tipoOrden) => {
 
         let titulo;
 
-        if(listadoProductos == 'destacados'){
-            titulo = 'Productos Destacados';
+        if(listadoProductos == 'todos'){
+            titulo = 'Productos';
         }
         insertarContenido(titulo, $template);
 
