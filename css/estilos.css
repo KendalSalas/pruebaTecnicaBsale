@@ -24,7 +24,11 @@ body {
 }
 
 #productos-destacados{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    width: 80%;
     margin: 0 25px;
+    text-align: center;
 }
 
 @media(min-width: 762px) {
