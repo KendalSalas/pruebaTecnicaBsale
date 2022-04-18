@@ -23,12 +23,18 @@ body {
     text-align: center;
 }
 
-#productos-destacados {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    width: 90%;
-    margin: 0 auto;
-    text-align: center;
+#productos-destacados{
+    margin: 0 25px;
+}
+
+@media(min-width: 762px) {
+    #productos-destacados {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+    }   
 }
 
 /* Div Productos */
